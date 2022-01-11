@@ -15,4 +15,9 @@ export TF_VAR_bucket_name='your unique bucket name'
 
 ```
 
+## Create the bucket in s3
+
+
+
+
 docker run -d --rm -p 5000:5000 -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e BUCKET_NAME s3bucket:v1
