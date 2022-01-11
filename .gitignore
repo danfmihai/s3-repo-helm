@@ -1,0 +1,4 @@
+part2/test*
+part1/.terraform*
+part1/terraform.*
+sample*
