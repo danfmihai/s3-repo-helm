@@ -7,10 +7,12 @@
 
 Before you run terrafrom in part1 folder you need to export the folowing variables:
 ```
-export AWS_ACCESS_KEY_ID='YOUR KEY ID'
-export AWS_SECRET_ACCESS_KEY='YOUR KEY'
-export TF_VAR_bucket_name='your unique bucket name'
-TF_VARS_folder_to_upload='sample' # sample folder will be in root tree, not in part1 or part2
+export AWS_ACCESS_KEY_ID='AKIAU5AXRVLYZEXPYV53'
+export AWS_SECRET_ACCESS_KEY='f/qpeCVi5H0hFoeaDVYS4nVy7WoNCAZRAUWSiXJL'
+export TF_VAR_bucket_name='mihai-helm-charts-s3-repository'
+export TF_VAR_folder_to_upload='sample'  # repository folder
+export AWS_REGION='us-east-1'  # required if you run the helm pluging to initialize s3 folder
+
 ```
 Installed on the machine you're running this repo:
 - aws cli 

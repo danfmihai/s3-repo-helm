@@ -1,19 +1,3 @@
-variable "region" {
-  type        = string
-  default     = ""
-  description = "The AWS region to use"
-}
-
-variable "shared_credentials_file" {
-  description = "Location of the aws credential file e.g. ~ubuntu/.aws/credentials"
-  default     = ""
-}
-
-variable "profile" {
-  type        = string
-  default     = ""
-  description = "What profile to use"
-}
 
 variable "bucket_name" {
   type        = string
@@ -37,3 +21,6 @@ variable "acl_value" {
   description = "description"
 }
 
+variable "folder_to_upload" {
+  type = string
+}
