@@ -7,4 +7,12 @@
 - The s3 bucket should be created using Terraform.
 - Once the bucket is ready, push some example charts into the repository
 
+Before you run terrafrom in part1 folder you need to export the folowing variables:
+```
+export AWS_ACCESS_KEY_ID='YOUR KEY ID'
+export AWS_SECRET_ACCESS_KEY='YOUR KEY'
+export TF_VAR_bucket_name='your unique bucket name'
+
+```
+
 docker run -d --rm -p 5000:5000 -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e BUCKET_NAME s3bucket:v1
