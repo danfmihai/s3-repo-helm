@@ -7,6 +7,10 @@ module "s3" {
   force_destroy = var.force_destroy
 }
 
+locals {
+  folder_name = trim(aws_s3_bucket_object.helm_repo_folder.id,"/")
+}
+
 #create folder to host helm resository
 resource "aws_s3_bucket_object" "helm_repo_folder" {
   depends_on = [
@@ -30,5 +34,7 @@ resource "null_resource" "init_helm" {
   provisioner "local-exec" {
     command = "helm s3 init s3://${var.bucket_name}/${var.folder_to_upload}"
   }
+
+  
 }
 
