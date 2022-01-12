@@ -24,3 +24,7 @@ variable "acl_value" {
 variable "folder_to_upload" {
   type = string
 }
+
+variable "chart_name" {
+  type = string
+ }
