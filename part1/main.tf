@@ -21,10 +21,10 @@ resource "null_resource" "init_helm" {
    depends_on = [
      aws_s3_bucket_object.helm_repo_folder
    ]
-
-  # provisioner "local-exec" {
-  #   command = "[[ -z $(helm plugin list | grep s3 | awk '{print $1}') ]] && helm plugin install https://github.com/hypnoglow/helm-s3.git"
-  # }
+  #checks if plugin exists and if not it will install it
+  provisioner "local-exec" {
+    command = " if [ -z $(helm plugin list | grep s3 | awk '{print $1}') ]; then  helm plugin install https://github.com/hypnoglow/helm-s3.git; fi"
+  }
   
   # To install the helm-s3 plugin on your client machine, run the following command: helm plugin install https://github.com/hypnoglow/helm-s3.git
   provisioner "local-exec" {
