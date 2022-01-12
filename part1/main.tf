@@ -32,9 +32,21 @@ resource "null_resource" "init_helm" {
   
   # To install the helm-s3 plugin on your client machine, run the following command: helm plugin install https://github.com/hypnoglow/helm-s3.git
   provisioner "local-exec" {
-    command = "helm s3 init s3://${var.bucket_name}/${var.folder_to_upload}"
+    command = <<EOT
+    helm s3 init s3://${var.bucket_name}/${var.folder_to_upload}
+    helm repo add ${local.folder_name} s3://${module.s3.id}/${local.folder_name}/
+    EOT
+  }
+  # push a sample chart into s3 repository
+  provisioner "local-exec" {
+    command = <<EOT
+    if test ${var.chart_name}; then \
+      helm s3 push ${var.chart_name} ${local.folder_name} \
+    else 
+      echo "File doen't exist!" \
+    fi
+    EOT
   }
 
-  
 }
 
