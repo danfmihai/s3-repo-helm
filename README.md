@@ -18,29 +18,19 @@ Installed on the machine you're running this repo:
 - aws cli 
 - helm
 
-- Also you need to have installed the helm-s3 plugin for Amazon S3. To install the helm-s3 plugin on your client machine, run the following command:
-```
-helm plugin install https://github.com/hypnoglow/helm-s3.git
-```
-
-- To initialize the target folder as a Helm repository, use the following command: 
-``` 
-helm s3 init s3://<bucket_name>/path/myapp
-```
-
-
-
 ## PART 1
 
 - The s3 bucket should be created using Terraform.
 - Once the bucket is ready, push some example charts into the repository
+
+Before you run Terraform check the `helm.auto.tfvars` file and change with your values. Read more info in `variable.tf` about each variable.
 
 
 In order to create the bucket in aws we run:
 ```
 cd part1
 terraform init
-terraform aplly -autoapprove
+terraform apply -auto-approve
 ```
 Bucket should be created
 
