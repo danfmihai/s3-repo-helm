@@ -24,7 +24,7 @@ Installed on the machine you're running this repo:
 - Once the bucket is ready, push some example charts into the repository
 
 Before you run Terraform check the `helm.auto.tfvars` file and change with your values. Read more info in `variable.tf` about each variable.
-
+There's also a sample helm chart package included, but if you want to add yours you can add it in the same folder and change the name of it in `helm.auto.tfvars`
 
 In order to create the bucket in aws we run:
 ```

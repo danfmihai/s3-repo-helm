@@ -40,10 +40,10 @@ resource "null_resource" "init_helm" {
   # push a sample chart into s3 repository
   provisioner "local-exec" {
     command = <<EOT
-    if test ${var.chart_name}; then \
-      helm s3 push ${var.chart_name} ${local.folder_name} \
+    if [ -f "${var.chart_name}" ]; then 
+      helm s3 push ${var.chart_name} ${local.folder_name} 
     else 
-      echo "File doen't exist!" \
+      echo "File doen't exist!" 
     fi
     EOT
   }
