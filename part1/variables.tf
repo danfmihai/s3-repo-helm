@@ -27,4 +27,4 @@ variable "folder_to_upload" {
 
 variable "chart_name" {
   type = string
- }
+}
