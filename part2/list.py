@@ -5,9 +5,10 @@ from flask import request
 from flask import render_template
 from flask import Flask
 
+
 access_key_id = os.getenv('AWS_ACCESS_KEY_ID')
 secret_key = os.environ.get('AWS_SECRET_ACCESS_KEY')
-bucket_name = os.environ.get('BUCKET_NAME')
+bucket_name = os.environ.get('TF_VAR_bucket_name')
 
 # current module (__name__) as argument.
 app = Flask(__name__)
@@ -22,6 +23,10 @@ s3 = session.resource('s3')
 
 my_bucket = s3.Bucket(str(bucket_name))
 
+@app.route("/health")
+def health():
+    return "Pass"
+
 @app.route('/')
 # ‘/’ URL is bound with the listS3 function.
 def lists3():
@@ -30,7 +35,7 @@ def lists3():
            for my_bucket_object in my_bucket.objects.all():
                list.append(my_bucket_object.key)
                
-           json_str = json.dumps(list, indent=4)
+           json_str = json.dumps(list, indent=2, separators=(',', ':'))
            print(json_str)
            return render_template("index.html", data=json_str, bucket_name=my_bucket.name)
     else:
