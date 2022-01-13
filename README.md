@@ -1,6 +1,5 @@
-# 1. Create a Helm repository using AWS S3 bucket
-# 2. Deliver Small App for K8S and a Helm Chart
-# 3. Create a Github action that upon merge to a certain branch packages the application’s Helm chart and pushes it to the S3 repository
+## 1. Creates a Helm repository using AWS S3 bucket using Terraform
+## 2. Deliver Small App for K8S and a Helm Chart
 
 
 ## Prerequisites:
@@ -13,12 +12,12 @@ export TF_VAR_bucket_name='your-helm-repo-bucket-name' # name of your bucket
 export TF_VAR_folder_to_upload='sample'  # repository folder name
 export AWS_DEFAULT_REGION='us-east-1'  # required if you run the helm pluging to initialize s3 folder
 ```
-You can use the `export_var_sample.txt` file to export your environment variables from above. Make sure to enter your own values!
+You can use the `export_var.txt` from settings folder to export your environment variables from above. Make sure to enter your own values! Use command :
 ```
-source export_var_sample.txt
+source export_var.txt
 ```
 
-Installed on the machine you're running this repo:
+Install on the machine you're running this repo:
 - aws cli 
 - helm
 
