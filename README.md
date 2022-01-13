@@ -47,7 +47,19 @@ A Dockerfile is provided that creates the image of the app ready to be pushed to
 
 There's a helm chart with the app in `helm_app` folder, ready to be provisioned to a k8 cluster.
 
+To package the helm chart and push it to s3 use folowing commands:
+```
+helm repo add s3-repo s3://<yourbucketname>/<repofolder>/
+helm package helm-app                       # creates a .tgz file
+helm s3 push helm-app-0.1.0.tgz helm-app    # use the newly .tgz file to push it to s3
+```
+To test the helm chart in a k8 use:
+```
+helm install sample-name-app s3/helm-app --version 0.1.0
+```
 
+References:
 
+https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/set-up-a-helm-v3-chart-repository-in-amazon-s3.html
 
 #docker run -d --rm -p 5000:5000 -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e BUCKET_NAME s3bucket:v1

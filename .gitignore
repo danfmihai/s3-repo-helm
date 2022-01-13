@@ -3,4 +3,6 @@ part1/.terraform*
 part1/terraform.*
 sample
 templates*
-helm-app-0.1.0.tgz
+helm-app-*.tgz
+helm-app/values.yaml
+part2*
